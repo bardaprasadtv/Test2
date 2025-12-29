@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - The Guru Corner</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        /* About Page Specific Styles */
+        
+        /* Hero Section */
+        .about-hero {
+            padding: 150px 2rem 80px;
+            text-align: center;
+            background: var(--bg-black);
+        }
+
+        .about-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        /* Content Sections */
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        /* Story Section */
+        .story-section {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            gap: 5rem;
+            align-items: center;
+            margin-bottom: 8rem;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 550px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .story-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 59, 48, 0.2), rgba(255, 193, 7, 0.2));
+            z-index: 1;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-white);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .story-highlight {
+            background: rgba(255, 59, 48, 0.1);
+            border-left: 4px solid var(--accent-red);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .story-highlight p {
+            color: var(--text-white);
+            font-style: italic;
+            margin: 0;
+            font-size: 1.15rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            margin-bottom: 8rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 59, 48, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-bottom: 8rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 59, 48, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-red), #FF6B35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            flex-shrink: 0;
+        }
+
+        .team-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .team-role {
+            color: var(--accent-red);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .team-info p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(255, 59, 48, 0.05);
+            border: 1px solid rgba(255, 59, 48, 0.1);
+            border-radius: 30px;
+            padding: 5rem 3rem;
+            margin-bottom: 8rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-white);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .story-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 3rem;
+                letter-spacing: 4px;
+            }
+
+            .story-content h2,
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-member {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🍔</div>
+                <span>THE GURU CORNER</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-search">🔍</button>
+                <button class="nav-login">Login</button>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <h1>ABOUT US</h1>
+        <p>From a small college canteen dream to Mumbai's favorite street food destination. Discover the story behind The Guru Corner.</p>
+    </section>
+
+    <!-- About Content -->
+    <div class="about-content">
+        
+        <!-- Our Story -->
+        <section class="story-section">
+            <div class="story-image">
+                <img src="images/hero-image.png" alt="Our Story">
+            </div>
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p>
+                    The Guru Corner began in 2020 when two college friends, Rajesh and Amit, 
+                    noticed a gap in Mumbai's street food scene. Students needed a place that 
+                    offered quality food at affordable prices, served with the speed their busy 
+                    schedules demanded.
+                </p>
+                <p>
+                    What started as a small stall outside a college campus has now grown into 
+                    Mumbai's most loved street food destination. We've served over 50,000 meals, 
+                    but our mission remains the same - authentic flavors, pocket-friendly prices, 
+                    and lightning-fast service.
+                </p>
+                <div class="story-highlight">
+                    <p>
+                        "We're not just serving food; we're creating memories for every student 
+                        who walks through our door. Every wrap, every burger, every chai - it's 
+                        made with the same care we'd want for ourselves."
+                    </p>
+                </div>
+                <p>
+                    Today, The Guru Corner is more than just a food joint. It's where friendships 
+                    are made, study groups meet, and celebration moments happen. We're proud to be 
+                    part of Mumbai's student community.
+                </p>
+            </div>
+        </section>
+
+        <!-- Our Values -->
+        <section class="values-section">
+            <div class="section-title">
+                <h2>What We Stand For</h2>
+                <p>The core values that drive everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Quality First</h3>
+                    <p>Fresh ingredients, authentic recipes, and rigorous quality checks ensure every bite is perfect.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Speed Matters</h3>
+                    <p>We know you're busy. That's why we guarantee your order is ready in under 10 minutes.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💰</div>
+                    <h3>Student Friendly</h3>
+                    <p>Great food shouldn't break the bank. Our prices are designed for student budgets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Orders Daily</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.8★</span>
+                    <span class="stat-label">Average Rating</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5 Years</span>
+                    <span class="stat-label">Serving Mumbai</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet the Team -->
+        <section class="team-section">
+            <div class="section-title">
+                <h2>Meet the Founders</h2>
+                <p>The passionate duo behind The Guru Corner</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">👨‍🍳</div>
+                    <div class="team-info">
+                        <h3>Rajesh Kumar</h3>
+                        <div class="team-role">Co-Founder & Head Chef</div>
+                        <p>
+                            With 10+ years of culinary experience, Rajesh brings authentic 
+                            street food flavors to every dish. His signature wraps have 
+                            become legendary among Mumbai students.
+                        </p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">👨‍💼</div>
+                    <div class="team-info">
+                        <h3>Amit Patel</h3>
+                        <div class="team-role">Co-Founder & Operations</div>
+                        <p>
+                            Amit ensures every order runs smoothly. His innovation in kitchen 
+                            operations has helped us achieve our 10-minute service guarantee 
+                            without compromising on quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">🍔</div>
+                        <span>THE GURU CORNER</span>
+                    </div>
+                    <p class="footer-description">
+                        Mumbai's favorite street food destination. Serving authentic flavors 
+                        with quality, speed, and passion since 2020.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📱</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-heading">Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="menu.html#wraps">Wraps</a></li>
+                        <li><a href="menu.html#burgers">Burgers</a></li>
+                        <li><a href="menu.html#coolers">Coolers</a></li>
+                        <li><a href="menu.html#combos">Combos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <span class="contact-icon">📍</span>
+                            <span>Shop 12, Student Area<br>Mumbai, Maharashtra 400001</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📞</span>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">✉️</span>
+                            <span>hello@thegurucorner.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 The Guru Corner. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
