@@ -12,32 +12,82 @@ if (header) {
 }
 
 // ==================== MOBILE MENU TOGGLE ====================
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-const body = document.body;
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const body = document.body;
 
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
+    // Debug: Check if elements exist
+    console.log('Menu Toggle:', menuToggle);
+    console.log('Nav Links:', navLinks);
+
+    if (menuToggle && navLinks) {
+        console.log('✅ Mobile menu elements found - initializing...');
         
-        // Prevent body scroll when menu is open
-        if (navLinks.classList.contains('active')) {
-            body.style.overflow = 'hidden';
-        } else {
-            body.style.overflow = '';
-        }
-    });
-
-    // Close mobile menu when link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            body.style.overflow = '';
+        // Add click event to hamburger button
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('🍔 Hamburger clicked!');
+            
+            // Toggle active class on hamburger
+            menuToggle.classList.toggle('active');
+            
+            // Toggle active class on menu
+            navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+                console.log('📱 Menu opened');
+            } else {
+                body.style.overflow = '';
+                console.log('📱 Menu closed');
+            }
         });
-    });
-}
+
+        // Close mobile menu when link is clicked
+        const menuLinks = navLinks.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('🔗 Menu link clicked - closing menu');
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (navLinks.classList.contains('active')) {
+                if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                    console.log('🖱️ Clicked outside - closing menu');
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                console.log('⌨️ Escape pressed - closing menu');
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+        
+        console.log('✅ Mobile menu initialized successfully!');
+    } else {
+        console.error('❌ Mobile menu elements not found!');
+        console.error('menuToggle:', menuToggle);
+        console.error('navLinks:', navLinks);
+    }
+});
 
 // ==================== SMOOTH SCROLL ====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
