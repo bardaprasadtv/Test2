@@ -1299,17 +1299,26 @@ nav {
         backdrop-filter: blur(20px) !important;
         flex-direction: column !important;
         justify-content: center !important;
+        align-items: center !important;
         gap: 2rem !important;
         transition: left 0.4s ease !important;
         z-index: 1000 !important;
+        padding: 0 !important;
     }
 
     .nav-links.active {
         left: 0 !important;
     }
 
+    .nav-links li {
+        list-style: none !important;
+        margin: 0 !important;
+    }
+
     .nav-links li a {
         font-size: 1.5rem !important;
+        display: block !important;
+        padding: 1rem 2rem !important;
     }
 
     .menu-toggle {
@@ -1329,13 +1338,16 @@ nav {
         transform: rotate(-45deg) translateY(-8px) !important;
     }
 
-    /* Hero Section - CRITICAL FIXES */
+    /* Hero Section - FIXED HEIGHT AND SPACING */
     .hero {
-        padding: 80px 1rem 2rem 1rem !important;
-        min-height: auto !important;
+        padding: 100px 1rem 3rem 1rem !important;
+        min-height: 100vh !important;
         grid-template-columns: 1fr !important;
         gap: 2rem !important;
         overflow-x: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
     }
 
     .hero-content {
@@ -1349,6 +1361,8 @@ nav {
         order: 1 !important;
         display: flex !important;
         justify-content: center !important;
+        align-items: center !important;
+        min-height: 300px !important;
     }
 
     /* Badge - FIXED */
@@ -1381,7 +1395,7 @@ nav {
     .hero-buttons {
         flex-direction: column !important;
         gap: 0.8rem !important;
-        margin-bottom: 2rem !important;
+        margin-bottom: 2.5rem !important;
         width: 100% !important;
         padding: 0 !important;
     }
@@ -1395,37 +1409,64 @@ nav {
         box-sizing: border-box !important;
     }
 
-    /* Food Image */
+    /* Food Image - LARGER */
+    .hero-image-container {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
     .hero-food-image {
-        width: 220px !important;
-        height: 220px !important;
+        width: 280px !important;
+        height: 280px !important;
+        object-fit: contain !important;
     }
 
     .ingredient {
         font-size: 1.5rem !important;
     }
 
-    /* Stats - CRITICAL FIX */
+    /* Stats - CRITICAL FIX FOR ALIGNMENT */
     .hero-stats {
+        display: flex !important;
         flex-direction: column !important;
-        gap: 1.2rem !important;
-        margin-top: 2rem !important;
+        gap: 1.5rem !important;
+        margin-top: 2.5rem !important;
         width: 100% !important;
+        align-items: center !important;
+        padding: 0 !important;
     }
 
     .stat-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
         text-align: center !important;
         width: 100% !important;
+        padding: 1rem 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .stat-item:last-child {
+        border-bottom: none !important;
     }
 
     .stat-number {
-        font-size: 2rem !important;
+        font-size: 2.5rem !important;
         line-height: 1 !important;
+        margin-bottom: 0.5rem !important;
+        font-weight: 800 !important;
+        display: block !important;
     }
 
     .stat-label {
-        font-size: 0.75rem !important;
-        margin-top: 0.3rem !important;
+        font-size: 0.85rem !important;
+        margin-top: 0 !important;
+        display: block !important;
+        opacity: 0.8 !important;
     }
 
     /* Sections */
@@ -1487,6 +1528,131 @@ nav {
     .footer-bottom-links {
         flex-direction: column !important;
         gap: 0.8rem !important;
+    }
+
+    /* MENU PAGE MOBILE FIXES */
+    .menu-hero {
+        padding: 120px 1rem 60px !important;
+    }
+
+    .menu-hero h1 {
+        font-size: 2.5rem !important;
+        letter-spacing: 3px !important;
+    }
+
+    .menu-hero p {
+        font-size: 1rem !important;
+    }
+
+    /* Category Navigation Mobile */
+    .category-nav {
+        padding: 1rem !important;
+        top: 70px !important;
+    }
+
+    .category-tabs {
+        justify-content: flex-start !important;
+        gap: 0.8rem !important;
+    }
+
+    .category-tab {
+        padding: 0.7rem 1.5rem !important;
+        font-size: 0.85rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* Menu Section Mobile */
+    .category-section {
+        margin-bottom: 3rem !important;
+    }
+
+    .category-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        direction: ltr !important;
+    }
+
+    .image-slider {
+        order: 1 !important;
+        min-height: 400px !important;
+    }
+
+    .menu-list-container {
+        order: 2 !important;
+        min-height: auto !important;
+        padding: 1rem !important;
+    }
+
+    .slider-wrapper {
+        width: 100% !important;
+        max-width: 350px !important;
+    }
+
+    .slider-image {
+        width: 85% !important;
+        height: 85% !important;
+    }
+
+    .category-header {
+        margin-bottom: 2rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .category-number {
+        font-size: 0.8rem !important;
+    }
+
+    .category-title {
+        font-size: 2.5rem !important;
+    }
+
+    .category-description {
+        font-size: 0.95rem !important;
+    }
+
+    .menu-items-list {
+        gap: 0 !important;
+    }
+
+    .menu-list-item {
+        padding: 1.2rem 0 !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+    }
+
+    .item-info {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .item-name {
+        font-size: 1.2rem !important;
+    }
+
+    .item-description {
+        font-size: 0.9rem !important;
+    }
+
+    .item-meta {
+        width: 100% !important;
+        justify-content: space-between !important;
+        gap: 1rem !important;
+    }
+
+    .item-price {
+        font-size: 1.5rem !important;
+    }
+
+    .item-arrow {
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .view-all-btn {
+        width: 100% !important;
+        margin-top: 2rem !important;
+        padding: 1rem 2rem !important;
     }
 }
 
